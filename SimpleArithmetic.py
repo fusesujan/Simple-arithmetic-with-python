@@ -4,15 +4,16 @@
 def SimpleArithmetic(params1, params2):
     print("Given numbers are", params1, 'and', params2)
 
-    print("Tell me which operation you wanna perform ? (-),(+),(*)")
+    print("Tell me which operation you wanna perform ? (-),(+),(*), (/)")
     opr = input()
-    result = 0
     if (opr == "-"):
         output = params1 - params2
     elif (opr == "+"):
         output = params1 + params2
     elif (opr == "*"):
         output = params1 * params2
+    elif (opr == "/"):
+        output = params1 / params2
     else:
         return None
 
@@ -25,5 +26,7 @@ y = int(input())
 
 FinalResult = SimpleArithmetic(x, y)
 
-if FinalResult:
+if (FinalResult != 0):
     print("Your Final output is", FinalResult)
+else:
+    print("Be sure you enter one of the available operations")
