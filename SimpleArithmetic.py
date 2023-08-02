@@ -7,6 +7,7 @@ def SimpleArithmetic(params1, params2):
     print("Tell me which operation you wanna perform ? (-),(+),(*), (/)")
     opr = input()
     if (opr == "-"):
+        # user may want to minus the earlier number
         print("Want to alter the numbers ? y/n")
         alt1 = input()
         if alt1 == 'y' or alt1 == "Y":
@@ -18,6 +19,7 @@ def SimpleArithmetic(params1, params2):
     elif (opr == "*"):
         output = params1 * params2
     elif (opr == "/"):
+        # user may want to divide the earlier number
         print("Want to alter the numbers ? y/n")
         alt2 = input()
         if alt2 == 'y' or alt2 == "Y":
