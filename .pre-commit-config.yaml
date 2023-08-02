@@ -12,3 +12,5 @@ repos:
         entry: .git/hooks/email-validation-and-trailing-commit-whitespace.sh
         language: script
         types: [file]
+# upper part is used for pre-build id from the original repo
+# down part is there to use own code through sh code.
