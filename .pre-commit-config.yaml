@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      # - id: trailing-whitespace
+      - id: check-yaml
+
+  - repo: local
+    hooks:
+      - id: email-validation-and-trailing-commit-whitespace
+        name: Validate Email , Trailing commit white space and Commit -msg convention
+        entry: .git/hooks/email-validation-and-trailing-commit-whitespace.sh
+        language: script
+        types: [file]
