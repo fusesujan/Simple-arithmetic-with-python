@@ -1,6 +1,7 @@
 # Q.Write Python functions for basic mathematical operations such as addition, subtraction, and multiplication.
 # These functions should take two numeric inputs and return the result of the corresponding operation.
 
+# defining a function that can do all the operations
 def SimpleArithmetic(params1, params2):
     print("Given numbers are", params1, 'and', params2)
 
