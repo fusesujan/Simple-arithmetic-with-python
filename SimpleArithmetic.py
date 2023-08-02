@@ -34,8 +34,8 @@ def SimpleArithmetic(params1, params2):
 
 
 print("Please enter any two numbers")
-x = int(input())
 y = int(input())
+x = int(input())
 
 FinalResult = SimpleArithmetic(x, y)
 
