@@ -34,11 +34,11 @@ def SimpleArithmetic(params1, params2):
 
 
 print("Please enter any two numbers")
-y = int(input())
 x = int(input())
+y = int(input())
 
+# function is called with two parameters passed on it
 FinalResult = SimpleArithmetic(x, y)
-
 if (FinalResult != 0):
     print("Your Final output is", FinalResult)
 else:
