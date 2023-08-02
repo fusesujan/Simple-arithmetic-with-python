@@ -7,13 +7,23 @@ def SimpleArithmetic(params1, params2):
     print("Tell me which operation you wanna perform ? (-),(+),(*), (/)")
     opr = input()
     if (opr == "-"):
-        output = params1 - params2
+        print("Want to alter the numbers ? y/n")
+        alt1 = input()
+        if alt1 == 'y' or alt1 == "Y":
+            output = params2 - params1
+        else:
+            output = params1 - params2
     elif (opr == "+"):
         output = params1 + params2
     elif (opr == "*"):
         output = params1 * params2
     elif (opr == "/"):
-        output = params1 / params2
+        print("Want to alter the numbers ? y/n")
+        alt2 = input()
+        if alt2 == 'y' or alt2 == "Y":
+            output = params2 / params1
+        else:
+            output = params1 / params2
     else:
         return None
 
