@@ -36,13 +36,28 @@ Use this plugin to manage the pre-commit hook. Implement a commit-msg hook to ch
 #### First write the script for implimenting initial problem only. 
 
 - To make .git folder visible in vscode, go to setting and search **exclude**, scroll and you will get .git , click the cross icon located in rightmost side of that text. 
-- go to that directory and make pre-commit named file. And write script to detect if there are any trailing whitespaces in the commit or not.  Make  it executable with `chmod +x pathtothatfile `. And try commiting with whitespace it should give warning/error but depends on script code.
+- go to that directory and make pre-commit named file. And write script to detect if there missing the commit message convention or not.  Make  it executable with `chmod u+x pathtothatfile `. And try commiting with withouf following convention it should give warning/error but depends on script code. It should be like 
+```
+#!/bin/bash
+
+# Check if the commit message starts with a valid commit type
+if ! grep -E -q "^(feat|fix|refactor|chore|docs|style|test):" "$1"; then
+    echo "Error: Commit message must start with a valid commit type tag (e.g., 'Feat:', 'Fix:', 'Refactor:', etc.)."
+    exit 1
+fi
+
+# Display success message if the commit is valid
+echo "Commit message is valid. Pre-commit checks passed successfully."
+exit 0
+```
+
 
 #### Now it is mentioned to do all this with pre-commit , package of python. . 
 -  Please visit this in order to understand better about [pre-commit](https://pre-commit.com/) .
 - Follow the steps :
 	`pip install pre-commit`
 	create a file named `.pre-commit-config.yaml`. And put :
+
 	```
 	repos:
 		- repo: https://github.com/pre-commit/pre-commit-hooks
@@ -65,11 +80,16 @@ Use this plugin to manage the pre-commit hook. Implement a commit-msg hook to ch
 
       - repo: local
         hooks:
-          - id: email-validation-and-commit-convention
-            name: Validate Email ,Commit -msg convention
-            entry: .git/hooks/email-validation-and-commit-convention.sh
-            language: script
-            types: [file]
+            -id: validate-email-format
+             name: Email format validation
+             entry: python -c "import re, sys; email = sys.argv[1]; sys.exit(0) if re.match(r'^[\w\.-]+@[\w\.-]+\.[a-z]{2,}$', email) else sys.exit(1)"
+             language: system
+             args: ["sujan.sharma@fusemachines.com"]
+            -id: check-commit-convention
+             name: Commit -msg convention
+             entry: .git/hooks/email-validation-and-commit-convention.sh
+             language: script
+             types: [file]
 
       - repo: local
         hooks:
